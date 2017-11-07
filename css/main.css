@@ -1,4 +1,26 @@
+body {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
 p {
     font-size: 5em;
-    color: gray;
+}
+
+.sun {
+    font-size: 5em;
+    position: absolute;
+    left: 0;
+    top: -5.75vh;
+}
+
+#fulcrum {
+    position: absolute;
+    bottom: 0;
+    margin: 0 12.5vw;
+    height: 2vh;
+    width: 75vw;
+    background: trasparent;
+
+
 }
