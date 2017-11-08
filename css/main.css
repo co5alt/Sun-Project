@@ -1,35 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
 body {
-    
+
     box-sizing: border-box;
     overflow: hidden;
-    background-color: midnightblue;
+    background-color: black;
     transition: 3s;
 }
 
-p {
-    font-size: 5em;
-}
 
 .sun {
-    font-size: 5em;
-    color: yellow;
+    height: 7.5vh;
+    width: 7.5vh;
+    border-radius: 7.5vh;
+    background: yellow;
     position: absolute;
     left: 0;
     top: -5.75vh;
+    z-index: 10;
 }
 
-#moon {
+
+.overlay {
     display: none;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 5vw;
-    width: 5vw;
-    border-radius:5vw;
-    background-color: antiquewhite;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    padding: 7.5vh 0;
+    color: aliceblue;
+    font-family: 'Arimo', sans-serif;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    background-color: skyblue;
+}
+
+
+.night {
+    display: none;
+    position: realtive;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    padding: 7.5vh 0;
+    color: aliceblue;
+    font-family: 'Arimo', sans-serif;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    background-color: black;
     
 }
+
 #fulcrum {
     position: absolute;
     bottom: 0;
@@ -40,4 +61,14 @@ p {
     background: trasparent;
 
 
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 11;
+}
+
+footer img {
+    width: 100vw;
 }

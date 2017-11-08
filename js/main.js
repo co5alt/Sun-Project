@@ -6,40 +6,11 @@ var day_length;
 var day_remaining;
 var position;
 var rotation;
+var current_time;
 var time_remaining;
-var hours;
-var minutes;
-var seconds;
+var hours, minutes, seconds;
 
 
-function countdown() {
-    var current_time = Math.round(Date.now() / 1000);
-    time_remaining = sunset - current_time;
-    hours = parseInt(time_remaining / 3600);
-    time_remaining = time_remaining % 3600;
-
-    minutes = parseInt(time_remaining / 60);
-    seconds = parseInt(time_remaining % 60);
-
-
-
-    var showCountdown = "";
-
-    if (hours !== 0) {
-        showCountdown = showCountdown + hours + ":";
-    }
-    if (minutes !== 0) {
-        if (minutes.length == 1) 
-        {showCountdown = showCountdown + "0" + minutes + ":";}
-         else {showCountdown = showCountdown + minutes + ":";}
-    }
- if (seconds.length == 1) {
-     $("#countdown").html(showCountdown +"0" + seconds);
- }
-        
-    else {$("#countdown").html(showCountdown + seconds);}
-
-}
 
 
 $(document).ready(function () {
@@ -62,19 +33,83 @@ $(document).ready(function () {
         if (time >= sunrise && time < sunset) {
             $("body").css("background-color", "skyblue");
             $("#fulcrum").css("transform", "rotate(" + rotation + "deg)");
-            $(".sun").hover(function(){
-                $(this).css("color", "blue");},
-                            function(){
-                $(this).css("color", "yellow");
+            $(".sun").click(function(){
+                $(".overlay").fadeIn(1000);
+                $(".overlay").delay(3000);
+                $(".overlay").fadeOut(1000);
             });
-            $("#moon").css("display", "none");
-        setInterval(countdown(), 1000);
+            setInterval(
+                function countdown() {
+                    current_time = Math.round(Date.now() / 1000);
+                    time_remaining = sunset - current_time;
+                    hours = parseInt(time_remaining / 3600);
+                    time_remaining = time_remaining % 3600;
 
-        } else {
+                    minutes = parseInt(time_remaining / 60);
+                    seconds = parseInt(time_remaining % 60);
+
+                    var showCountdown = "";
+
+                    if (hours !== 0) {
+                        if (hours == 1) {
+                            showCountdown = showCountdown + hours + " hour ";
+                        } else {
+                            showCountdown = showCountdown + hours + " hours ";
+                        }
+                    }
+                    if (minutes !== 0) {
+                        if (minutes == 1) {
+                            showCountdown = showCountdown + minutes + " minute ";
+                        } else {
+                            showCountdown = showCountdown + minutes + " minutes ";
+                        }
+                    }
+                    if (seconds == 1) {
+                        $(".countdown").html(showCountdown + seconds + " second");
+                    } else {
+                        $(".countdown").html(showCountdown + seconds + " seconds");
+                    }
+
+                }, 1000);
+            
+
+
+        } else { 
             $("body").css("background-color", "midnightblue");
-            $("body").css("color", "gray");
             $(".sun").css("display", "none");
-            $("#moon").fadeIn();
+             setInterval(
+                function countdown() {
+                    current_time = Math.round(Date.now() / 1000);
+                    time_remaining = (sunrise + 86400) - current_time;
+                    hours = parseInt(time_remaining / 3600);
+                    time_remaining = time_remaining % 3600;
+
+                    minutes = parseInt(time_remaining / 60);
+                    seconds = parseInt(time_remaining % 60);
+
+                    var showCountdown = "";
+
+                    if (hours !== 0) {
+                        if (hours == 1) {
+                            showCountdown = showCountdown + hours + " hour ";
+                        } else {
+                            showCountdown = showCountdown + hours + " hours ";
+                        }
+                    }
+                    if (minutes !== 0) {
+                        if (minutes == 1) {
+                            showCountdown = showCountdown + minutes + " minute ";
+                        } else {
+                            showCountdown = showCountdown + minutes + " minutes ";
+                        }
+                    }
+                    if (seconds == 1) {
+                        $(".countdown").html(showCountdown + seconds + " second");
+                    } else {
+                        $(".countdown").html(showCountdown + seconds + " seconds");
+                    }
+
+                }, 1000);
         }
 
 
