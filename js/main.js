@@ -33,11 +33,15 @@ $(document).ready(function () {
         if (time >= sunrise && time < sunset) {
             $("body").css("background-color", "skyblue");
             $("#fulcrum").css("transform", "rotate(" + rotation + "deg)");
-            $(".sun").click(function(){
+            $(".sun").hover(function(){
                 $(".overlay").fadeIn(1000);
-                $(".overlay").delay(3000);
+                $(".overlay").delay(1500);},
+                            function(){
+                $(".overlay").delay(1500);
                 $(".overlay").fadeOut(1000);
             });
+                            
+                
             setInterval(
                 function countdown() {
                     current_time = Math.round(Date.now() / 1000);
